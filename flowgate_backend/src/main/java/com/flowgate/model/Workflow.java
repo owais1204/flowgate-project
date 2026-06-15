@@ -28,6 +28,9 @@ public class Workflow {
 
     private String assignedTo;
 
+    // NEW FIELD
+    private String currentApprover;
+
     private String approvedBy;
 
     @Column(columnDefinition = "TEXT")
@@ -41,53 +44,119 @@ public class Workflow {
         this.createdAt = LocalDateTime.now();
     }
 
-    public Long getId() { return id; }
+    // GETTERS
 
-    public String getTitle() { return title; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getDescription() { return description; }
+    public String getTitle() {
+        return title;
+    }
 
-    public String getCategory() { return category; }
+    public String getDescription() {
+        return description;
+    }
 
-    public String getDepartment() { return department; }
+    public String getCategory() {
+        return category;
+    }
 
-    public String getPriority() { return priority; }
+    public String getDepartment() {
+        return department;
+    }
 
-    public String getStatus() { return status; }
+    public String getPriority() {
+        return priority;
+    }
 
-    public String getCreatedBy() { return createdBy; }
+    public String getStatus() {
+        return status;
+    }
 
-    public String getAssignedTo() { return assignedTo; }
+    public String getCreatedBy() {
+        return createdBy;
+    }
 
-    public String getApprovedBy() { return approvedBy; }
+    public String getAssignedTo() {
+        return assignedTo;
+    }
 
-    public String getComments() { return comments; }
+    public String getCurrentApprover() {
+        return currentApprover;
+    }
 
-    public LocalDateTime getCreatedAt() { return createdAt; }
+    public String getApprovedBy() {
+        return approvedBy;
+    }
 
-    public LocalDateTime getApprovedAt() { return approvedAt; }
+    public String getComments() {
+        return comments;
+    }
 
-    public void setTitle(String title) { this.title = title; }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 
-    public void setDescription(String description) { this.description = description; }
+    public LocalDateTime getApprovedAt() {
+        return approvedAt;
+    }
 
-    public void setCategory(String category) { this.category = category; }
+    // SETTERS
 
-    public void setDepartment(String department) { this.department = department; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public void setPriority(String priority) { this.priority = priority; }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    public void setStatus(String status) { this.status = status; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public void setCreatedBy(String createdBy) { this.createdBy = createdBy; }
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
-    public void setAssignedTo(String assignedTo) { this.assignedTo = assignedTo; }
+    public void setDepartment(String department) {
+        this.department = department;
+    }
 
-    public void setApprovedBy(String approvedBy) { this.approvedBy = approvedBy; }
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
 
-    public void setComments(String comments) { this.comments = comments; }
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
 
-    public void setApprovedAt(LocalDateTime approvedAt) { this.approvedAt = approvedAt; }
+    public void setAssignedTo(String assignedTo) {
+        this.assignedTo = assignedTo;
+    }
+
+    public void setCurrentApprover(String currentApprover) {
+        this.currentApprover = currentApprover;
+    }
+
+    public void setApprovedBy(String approvedBy) {
+        this.approvedBy = approvedBy;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setApprovedAt(LocalDateTime approvedAt) {
+        this.approvedAt = approvedAt;
+    }
 }
