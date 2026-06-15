@@ -1,0 +1,7 @@
+com\flowgate\repository\UserRepository.class
+com\flowgate\FlowgateApplication.class
+com\flowgate\model\Workflow.class
+com\flowgate\model\User.class
+com\flowgate\controller\AuthController.class
+com\flowgate\controller\WorkflowController.class
+com\flowgate\repository\WorkflowRepository.class

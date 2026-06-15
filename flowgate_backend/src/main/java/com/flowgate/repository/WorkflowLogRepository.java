@@ -1,0 +1,11 @@
+package com.flowgate.repository;
+
+import com.flowgate.model.WorkflowLog;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface WorkflowLogRepository extends JpaRepository<WorkflowLog, Long> {
+
+    List<WorkflowLog> findByWorkflowId(Long workflowId);
+}
