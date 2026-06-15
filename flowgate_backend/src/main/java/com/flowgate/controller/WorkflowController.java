@@ -49,8 +49,6 @@ public class WorkflowController {
         if (workflow.getAssignedTo() == null) {
             workflow.setAssignedTo("MANAGER");
         }
-        
-        workflow.setCurrentApprover("MANAGER");
 
         Workflow saved = workflowRepository.save(workflow);
 
@@ -133,13 +131,8 @@ public class WorkflowController {
         Workflow workflow = workflowRepository.findById(id)
                 .orElseThrow(() ->
                         new RuntimeException("Workflow Not Found"));
-        if (!"MANAGER".equals(workflow.getCurrentApprover())) {
-            throw new RuntimeException(
-                    "This workflow is not waiting for Manager approval");
-        }
 
         workflow.setAssignedTo("ADMIN");
-        workflow.setCurrentApprover("ADMIN");
         workflow.setStatus("Pending Admin Approval");
 
         workflowRepository.save(workflow);
@@ -154,7 +147,6 @@ public class WorkflowController {
         return workflow;
     }
 
-   
     // =====================================
     // ADMIN APPROVE
     // =====================================
@@ -166,15 +158,9 @@ public class WorkflowController {
                 .orElseThrow(() ->
                         new RuntimeException("Workflow Not Found"));
 
-        if (!"ADMIN".equals(workflow.getCurrentApprover())) {
-            throw new RuntimeException(
-                    "Manager approval required first");
-        }
-
         workflow.setStatus("Approved");
         workflow.setApprovedBy("ADMIN");
         workflow.setAssignedTo("COMPLETED");
-        workflow.setCurrentApprover("COMPLETED");
         workflow.setApprovedAt(LocalDateTime.now());
 
         workflowRepository.save(workflow);
@@ -192,6 +178,7 @@ public class WorkflowController {
     // =====================================
     // REJECT
     // =====================================
+
     @PutMapping("/{id}/reject")
     public Workflow reject(@PathVariable Long id) {
 
@@ -200,7 +187,6 @@ public class WorkflowController {
                         new RuntimeException("Workflow Not Found"));
 
         workflow.setStatus("Rejected");
-        workflow.setCurrentApprover("COMPLETED");
         workflow.setApprovedBy("ADMIN");
         workflow.setApprovedAt(LocalDateTime.now());
 

@@ -38,37 +38,23 @@ export default function WorkflowsPage() {
     }
   };
 
-  const approveWorkflow = async (workflow) => {
+  const approveWorkflow = async (id) => {
 
-  try {
+    try {
 
-    if (workflow.currentApprover === "MANAGER") {
+      await workflowApi.approve(id);
 
-      await workflowApi.managerApprove(workflow.id);
+      alert("Workflow Approved Successfully");
 
-      alert("Manager Approved Successfully");
+      loadWorkflows();
 
-    } else if (workflow.currentApprover === "ADMIN") {
+    } catch (error) {
 
-      await workflowApi.approve(workflow.id);
+      console.error(error);
 
-      alert("Admin Approved Successfully");
-
-    } else {
-
-      alert("Workflow already completed");
-      return;
+      alert("Approval Failed");
     }
-
-    loadWorkflows();
-
-  } catch (error) {
-
-    console.error(error);
-
-    alert("Approval Failed");
-  }
-};
+  };
 
   const rejectWorkflow = async (id) => {
 
@@ -230,7 +216,7 @@ export default function WorkflowsPage() {
                       <>
                         <button
                           onClick={() =>
-                            approveWorkflow(workflow)
+                            approveWorkflow(workflow.id)
                           }
                           className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-xl"
                         >
